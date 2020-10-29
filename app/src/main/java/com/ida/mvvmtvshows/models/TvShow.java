@@ -11,7 +11,7 @@ public class TvShow {
     private String name;
 
     @SerializedName("start_date")
-    private String startDAte;
+    private String startDate;
 
     @SerializedName("country")
     private String country;
@@ -33,8 +33,8 @@ public class TvShow {
         return name;
     }
 
-    public String getStartDAte() {
-        return startDAte;
+    public String getStartDate() {
+        return startDate;
     }
 
     public String getCountry() {

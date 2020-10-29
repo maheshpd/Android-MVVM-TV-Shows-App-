@@ -22,7 +22,7 @@ public class TVShowDetails {
     private String rating;
 
     @SerializedName("genres")
-    private String genres;
+    private String[] genres;
 
     @SerializedName("pictures")
     private String[] pictures;
@@ -50,7 +50,7 @@ public class TVShowDetails {
         return rating;
     }
 
-    public String getGenres() {
+    public String[] getGenres() {
         return genres;
     }
 

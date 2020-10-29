@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements TVShowsListener {
 
     private ActivityMainBinding activityMainBinding;
     private MostPopularTVShowsViewModel viewModel;
-    private List<TvShow> tvShows = new ArrayList<>();
+    private final List<TvShow> tvShows = new ArrayList<>();
     private TvShowsAdapter tvShowsAdapter;
     private int currentPage = 1;
     private int totalAvailablePages = 1;
@@ -71,17 +71,9 @@ public class MainActivity extends AppCompatActivity implements TVShowsListener {
 
     private void toggleLoading() {
         if (currentPage == 1) {
-            if (activityMainBinding.getIsLoading() != null && activityMainBinding.getIsLoading()) {
-                activityMainBinding.setIsLoading(false);
-            } else {
-                activityMainBinding.setIsLoading(true);
-            }
+            activityMainBinding.setIsLoading(activityMainBinding.getIsLoading() == null || !activityMainBinding.getIsLoading());
         } else {
-            if (activityMainBinding.getIsLoadingMore() != null && activityMainBinding.getIsLoadingMore()) {
-                activityMainBinding.setIsLoadingMore(false);
-            } else {
-                activityMainBinding.setIsLoadingMore(true);
-            }
+            activityMainBinding.setIsLoadingMore(activityMainBinding.getIsLoadingMore() == null || !activityMainBinding.getIsLoadingMore());
         }
     }
 
@@ -91,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements TVShowsListener {
         Intent intent = new Intent(getApplicationContext(), TVShowDetailsActivity.class);
         intent.putExtra("id", tvShow.getId());
         intent.putExtra("name", tvShow.getName());
-        intent.putExtra("startDate", tvShow.getStartDAte());
+        intent.putExtra("startDate", tvShow.getStartDate());
         intent.putExtra("country", tvShow.getCountry());
         intent.putExtra("network", tvShow.getNetwork());
         intent.putExtra("status", tvShow.getStatus());
